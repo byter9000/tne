@@ -1,0 +1,73 @@
+<ul>
+	<li ng-repeat="tab in tabs"
+		ng-click="onClick(tab)"
+		{{tab.disabled}}>&nbsp{{tab.title}}
+	</li>
+</ul>
+
+<div id=tab1 class=tabDiv>
+	<!-- tab 1 elements -->
+</div>
+<div id=tab2 class=tabDiv style="display:none;">
+	<!-- tab 2 elements -->
+</div>
+<div id=tab3 style="display:none;">
+	<!-- tab 3 elements -->
+</div>
+<div id=tab4 style="display:none;">
+	<!-- tab 4 elements -->
+</div>
+<div id=tab5 style="display:none;">
+  <!-- tab 5 elements -->
+</div>
+<div id=tab6 style="display:none;">
+	<!-- tab 6 elements -->
+</div>
+
+$scope.onTabClick = function (tab) {
+	// Hide any active tab pane
+	if($scope.isActive($scope.currentTab)) {
+		document.getElementById($scope.currentTab.div).style.display = "none";
+	}	
+	$scope.currentTab = tab;
+	document.getElementById(tab.div).style.display = "";
+}
+
+$scope.isActiveTab = function(tab) {
+	return tab === $scope.currentTab;
+}
+
+$scope.tabs = [
+	   {
+		   title    : 'Tab 1',
+		   div      : 'tab1',
+		   disabled : false
+	   },
+	   {
+		   title    : 'Tab 2',
+		   div      : 'tab2',
+		   disabled : false
+	   },
+	   {
+		   title    : 'Tab 3',
+		   div      : 'tab3',
+		   disabled : false
+	   },
+	   {
+		   title    : 'Tab 4',
+		   div      : 'tab4',
+		   disabled : false
+	   },
+	   {
+		   title    : 'Tab 5',
+		   div      : 'tab5',
+		   disabled : false
+	   },
+	   {
+		   title    : 'Tab 6',
+		   div      : 'tab6',
+		   disabled : false
+	   }
+    ];
+$scope.currentTab = $scope.tabs[0];
+	
